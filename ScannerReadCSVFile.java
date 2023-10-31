@@ -8,18 +8,8 @@ import java.io.FileNotFoundException;
 public class ScannerReadCSVFile
 {
     public void run() throws FileNotFoundException {
-        // Mr. Jaffe's code to read data from a file
-        // Instantiate a File object
         File dataFile = new File("TestScoresByClass.csv");
-
-        // Instantiate a Scanner object that uses the file
-        Scanner scanner = new Scanner(dataFile);
-
-        // Set the delimiter as a new-line character so we can read the
-        // data one line at a time
-        scanner.useDelimiter("\n");
-
-        // Continue while there's still data in the file to be read
+        Scanner scanner = new Scanner(dataFile).useDelimiter(",|\\n");
         while (scanner.hasNext()) {
             // Read the next line of the file
             String line = scanner.nextLine();
@@ -39,14 +29,14 @@ public class ScannerReadCSVFile
             // number, then the average score.  The first few lines should look
             // like this:
             //
-            // Class: Avg score
+            // Class: Avg scoree
             // 2125:  55
             // 1628:  47
             //
             // Pay attention to the spacing on your output
             //
             // Write your code in the space below!
-            
+            scanner.useDelimiter(",");
             
             
             
