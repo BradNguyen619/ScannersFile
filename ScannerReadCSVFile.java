@@ -8,38 +8,61 @@ import java.io.FileNotFoundException;
 public class ScannerReadCSVFile
 {
     public void run() throws FileNotFoundException {
+        // Mr. Jaffe's code to read data from a file
+        // Instantiate a File object
         File dataFile = new File("TestScoresByClass.csv");
-        Scanner scanner = new Scanner(dataFile).useDelimiter(",|\\n");
+
+        // Instantiate a Scanner object that uses the file
+        Scanner scanner = new Scanner(dataFile);
+
+        // Set the delimiter as a new-line character so we can read the
+        // data one line at a time
+        scanner.useDelimiter("\n");
+
+        // Continue while there's still data in the file to be read
         while (scanner.hasNext()) {
             // Read the next line of the file
-            String line = scanner.nextLine();
-            System.out.println(line);
+            String[] line = scanner.next().split(",");
+            double count = 0;
+            for (int i = 0; i < line.length; i++) {
+                if (i == 0) {
+                    System.out.print(line[i] + ": ");
+                } else {
+                    try {
+                        count += Double.parseDouble(line[i]);
+                    } catch  (NumberFormatException nfe) {
+                        System.out.print(line[i] + " is not integer");
+                    }
+                }
+            }
+            System.out.println(Math.round(count/10));
+
 
             // line now contains a line of comma-separated numbers
             // representing 10 test scores for each class.
             //
             // Your job is to parse the numbers into individual test scores using
-            // another Scanner variable using a comma as the delimiter.  
-            // 
+            // another Scanner variable using a comma as the delimiter.
+            //
             // Read the ten test scores and average them together.  The first
-            // number is the class number and the next 10 numbers are the 
-            // test scores.  
+            // number is the class number and the next 10 numbers are the
+            // test scores.
             //
             // You need to compute the average and print for each class the class
             // number, then the average score.  The first few lines should look
             // like this:
             //
-            // Class: Avg scoree
+            // Class: Avg score
             // 2125:  55
             // 1628:  47
             //
             // Pay attention to the spacing on your output
             //
             // Write your code in the space below!
-            scanner.useDelimiter(",");
-            
-            
-            
+
+
+
+
         }
     }
 
